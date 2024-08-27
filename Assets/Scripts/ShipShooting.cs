@@ -47,12 +47,23 @@ public class ShipShooting : MonoBehaviour
     {
         
         GameObject bullet = Instantiate(BulletPrefab, firePoint.position, firePoint.rotation);
-
+      
         // add velocity to the bullet to make it move. Should add ships velocity to this to make more realistic
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-        bullet.transform.rotation = Quaternion.LookRotation(Vector3.forward, firePoint.right);
 
-        rb.velocity = firePoint.up * bulletSpeed;
+        Rigidbody2D shipRb = GetComponent<Rigidbody2D>();
+        //new vector had to be used because i couldnt use the + operator to add the ships velocity before.
+
+        //this resulted in bullets flying off in each and every direction! perfect! i wanted it to be crazy
+        //that being said it wasn't good game play
+        //Vector2 bulletVelocity = new Vector2(firePoint.right.x, firePoint.right.y) * bulletSpeed + shipRb.velocity;
+        Vector2 bulletVelocity = new Vector2(firePoint.right.x, firePoint.right.y) * bulletSpeed; //+ new Vector2(0, shipRb.velocity.y);
+        //this is to test if what I did above actually changes anything
+        Debug.Log("Ship velocity: " + shipRb.velocity);
+        Debug.Log("Bullet velocity: " + bulletVelocity);
+
+
+        rb.velocity = bulletVelocity;
 
         currentBullets--;  
         UpdateBulletUI(); 
