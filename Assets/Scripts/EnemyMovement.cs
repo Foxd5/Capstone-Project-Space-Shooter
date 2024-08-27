@@ -100,8 +100,9 @@ public class EnemyMovement : MonoBehaviour
         }
 
         // clamp the position to prevent the enemy ship from moving off-screen
+        // +1 and -1 are arbitrary values so it doesnt overlap with UI elements
         pos.x = Mathf.Clamp(pos.x, -screenBounds.x + objectWidth, screenBounds.x - objectWidth);
-        pos.y = Mathf.Clamp(pos.y, -screenBounds.y + objectHeight, screenBounds.y - objectHeight);
+        pos.y = Mathf.Clamp(pos.y, -screenBounds.y + objectHeight + 1, screenBounds.y - objectHeight - 1);
         transform.position = pos;
     }
 }

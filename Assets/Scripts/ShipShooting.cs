@@ -60,8 +60,8 @@ public class ShipShooting : MonoBehaviour
         //+ new Vector2(0, shipRb.velocity.y); // adding this back gives diagnol velocity to the bullets, not good gameplay though
         Vector2 bulletVelocity = new Vector2(firePoint.right.x, firePoint.right.y) * bulletSpeed; 
         //this is to test if what I did above actually changes anything
-        Debug.Log("Ship velocity: " + shipRb.velocity);
-        Debug.Log("Bullet velocity: " + bulletVelocity);
+       // Debug.Log("Ship velocity: " + shipRb.velocity);
+       // Debug.Log("Bullet velocity: " + bulletVelocity);
 
 
         rb.velocity = bulletVelocity;
