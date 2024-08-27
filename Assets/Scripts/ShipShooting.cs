@@ -57,7 +57,8 @@ public class ShipShooting : MonoBehaviour
         //this resulted in bullets flying off in each and every direction! perfect! i wanted it to be crazy
         //that being said it wasn't good game play
         //Vector2 bulletVelocity = new Vector2(firePoint.right.x, firePoint.right.y) * bulletSpeed + shipRb.velocity;
-        Vector2 bulletVelocity = new Vector2(firePoint.right.x, firePoint.right.y) * bulletSpeed; //+ new Vector2(0, shipRb.velocity.y);
+        //+ new Vector2(0, shipRb.velocity.y); // adding this back gives diagnol velocity to the bullets, not good gameplay though
+        Vector2 bulletVelocity = new Vector2(firePoint.right.x, firePoint.right.y) * bulletSpeed; 
         //this is to test if what I did above actually changes anything
         Debug.Log("Ship velocity: " + shipRb.velocity);
         Debug.Log("Bullet velocity: " + bulletVelocity);

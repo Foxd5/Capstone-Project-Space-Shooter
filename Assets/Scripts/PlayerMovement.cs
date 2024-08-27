@@ -54,16 +54,17 @@ public class NewBehaviourScript : MonoBehaviour
         rb.velocity = new Vector2(moveX, moveY);
 
         rb.position = ClampPosition(rb.position);
-        // Call the boundary clamp function
+       
         //transform.position = ClampPosition(pos);
     }
 
-    // Function to clamp the position within the screen bounds
+    // function to clamp(or keep) the ship within the bounds of the screen
     private Vector2 ClampPosition(Vector2 pos)
     {
-        // Clamp the position so the ship doesn't move off-screen
+        //the +1 and -1 are artbitrary values. this makes it so the ship is clamped
+        //within the bounds of the UI so it doesnt overlap with things like healthbar and ammo/lives
         pos.x = Mathf.Clamp(pos.x, -screenBounds.x + objectWidth, screenBounds.x - objectWidth);
-        pos.y = Mathf.Clamp(pos.y, -screenBounds.y + objectHeight, screenBounds.y - objectHeight);
+        pos.y = Mathf.Clamp(pos.y, -screenBounds.y + objectHeight + 1, screenBounds.y - objectHeight - 1);
         return pos;
     }
 }
