@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8970975790241323893}
   m_Layer: 0
   m_Name: EnemyBullet
-  m_TagString: Untagged
+  m_TagString: EnemyBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 61121f9e3c35a4de1ab6a405d95a5fd8, type: 3}
-  m_Color: {r: 1, g: 0.8726415, b: 0.8777862, a: 1}
+  m_Color: {r: 1, g: 0.12048287, b: 0.08962262, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

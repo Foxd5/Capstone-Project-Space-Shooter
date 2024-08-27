@@ -4290,7 +4290,7 @@ MonoBehaviour:
   EnemyBulletPrefab: {fileID: 6037108035654240354, guid: 4af2ae874294647268451437a527332f,
     type: 3}
   EnemyfirePoint: {fileID: 1051784727}
-  bulletSpeed: 5
+  bulletSpeed: 7
   fireRate: 1.5
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
