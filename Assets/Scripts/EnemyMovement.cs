@@ -30,9 +30,9 @@ public class EnemyMovement : MonoBehaviour
         screenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, Camera.main.transform.position.z));
 
         // get the bounds from the MeshRenderer component
-        MeshRenderer meshRenderer = GetComponent<MeshRenderer>();
-        objectWidth = meshRenderer.bounds.extents.x;  // half the width of the mesh (remember, extents are always half)
-        objectHeight = meshRenderer.bounds.extents.y; // half the height of the mesh
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        objectWidth = spriteRenderer.bounds.extents.x;  // half the width of the mesh (remember, extents are always half)
+        objectHeight = spriteRenderer.bounds.extents.y; // half the height of the mesh
     }
 
     void Update()
@@ -100,7 +100,7 @@ public class EnemyMovement : MonoBehaviour
         }
 
         // clamp the position to prevent the enemy ship from moving off-screen
-        // +2 and -2 are arbitrary values so it doesnt overlap with UI elements. its different from player because the enemy
+        // +1.5 and -1.5 are arbitrary values so it doesnt overlap with UI elements. its different from player because the enemy
         //ships can be smaller
         pos.x = Mathf.Clamp(pos.x, -screenBounds.x + objectWidth, screenBounds.x - objectWidth);
         pos.y = Mathf.Clamp(pos.y, -screenBounds.y + objectHeight + 1.5f, screenBounds.y - objectHeight - 1.5f);
