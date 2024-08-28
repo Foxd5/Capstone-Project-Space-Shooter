@@ -42,7 +42,7 @@ public class HealthManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(isDestroyed)
+       if(isDestroyed)
         {
             respawnTimer += Time.deltaTime;
 
@@ -100,17 +100,26 @@ public class HealthManager : MonoBehaviour
     }
     void TriggerExplosionAndDelay()
     {
-      
+        Vector3 deathPosition = playerShip.transform.position;
+
         Instantiate(explodePrefab, playerShip.transform.position, Quaternion.identity);
         shipSpriteRenderer.enabled = false;
         shipMovementScript.enabled = false;
 
+        // stop the ship's movement by resetting its velocity
+        Rigidbody2D shipRb = playerShip.GetComponent<Rigidbody2D>();
+        shipRb.velocity = Vector2.zero;
+
         isDestroyed = true;
         respawnTimer = 0f;
 
+        playerShip.transform.position = deathPosition;
+        
+
     }
+    
     void RespawnShip()
-    {
+    { 
         healthAmount = 100f;
         healthBar.fillAmount = healthAmount / 100f;
 
@@ -119,7 +128,7 @@ public class HealthManager : MonoBehaviour
 
         isDestroyed = false;
     }
-
+    
 
     void UpdateLivesUI()
     {
@@ -146,6 +155,7 @@ public class HealthManager : MonoBehaviour
     IEnumerator GameOverDelay()
     {
         // wait for a short delay (e.g., 1 second) before showing the game over screen
+        //this lets me show the ship exploding before game over
         yield return new WaitForSecondsRealtime(1f);
 
        
