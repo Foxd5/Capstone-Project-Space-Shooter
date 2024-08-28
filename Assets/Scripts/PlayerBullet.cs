@@ -5,11 +5,12 @@ using UnityEngine;
 public class PlayerBullet : MonoBehaviour
 {
     private Collider2D playerCollider;
+    public float damage = 20f;
 
     // Start is called before the first frame update
     void Start()
     {
-        //player bullets were colliding with player ships. hopefully this fixes that
+        //player bullets were colliding with player's ship and spinning off into space. hopefully this fixes that
         playerCollider = GameObject.FindWithTag("Player").GetComponent<Collider2D>();
         Collider2D bulletCollider = GetComponent<Collider2D>();
         Physics2D.IgnoreCollision(bulletCollider, playerCollider);
@@ -27,10 +28,21 @@ public class PlayerBullet : MonoBehaviour
         }
     
     }
-
-    // Update is called once per frame
-    void Update()
+    //copying this from my enemy bullet script:
+    void OnTriggerEnter2D(Collider2D collision)
     {
+        if(collision.CompareTag("Enemy"))
+        {
+            EnemyHealthManager enemyHealth = collision.GetComponent<EnemyHealthManager>();
+            if(enemyHealth != null)
+            {
+                enemyHealth.TakeDamage(damage);
+            }
+
+            Destroy(gameObject);
+        }
         
     }
+
+    
 }

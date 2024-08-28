@@ -19,7 +19,8 @@ public class EnemyBullet : MonoBehaviour
             HealthManager playerHealth = collision.GetComponent<HealthManager>();
             if(playerHealth != null)
             {
-                Debug.Log("helath not null?");
+                //Debug.Log("health not null?");//this initiallty wasn't triggering because I forgot to attach
+                //the health manager to my player ship. Doy!!!
                 playerHealth.TakeDamage(damage);
             }
             Destroy(gameObject);
