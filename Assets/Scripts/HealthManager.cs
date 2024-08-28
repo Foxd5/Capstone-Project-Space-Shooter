@@ -37,12 +37,11 @@ public class HealthManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (healthAmount <= 0) //testing damage and healing. enter to take dam,
-                               //space to heal, if at 0 level should reset. 
+        if (healthAmount <= 0)  
         {
-            //SceneManager.LoadScene(SceneManager.GetActiveScene().name);//This line just reloaded the scene. I want to lose lives until the game ends.
             LoseLife();
         }
+        //below was to help with health bar implementation. should be removed once healthbar works. 
         if (Input.GetKeyDown(KeyCode.Return)) //enter does 20 damage to ship
         {
             TakeDamage(20);
