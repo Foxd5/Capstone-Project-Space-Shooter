@@ -11,10 +11,18 @@ public class HealthManager : MonoBehaviour
     public float healthAmount = 100f;
     public int MaxLives = 3;
     private int CurrentLives;
-
+    public GameObject explodePrefab;
+    public GameObject playerShip;
     public GameObject miniShipPrefab;
     public Transform ShipLivesPanel;
     public GameObject GameOverPanel;
+
+    private bool isDestroyed = false;
+    private float respawnTimer = 0f;
+    public float respawnDelay = 2f;
+
+    private SpriteRenderer shipSpriteRenderer;
+    private PlayerMovement shipMovementScript;
 
     public TextMeshProUGUI LivesCounterText; //for displaying lives in text. but i want it in ships!
 
@@ -26,17 +34,25 @@ public class HealthManager : MonoBehaviour
         UpdateLivesUI();
         GameOverPanel.SetActive(false); //makes sure the gameover panel is hidden on startup
 
-
-        /* if (healthBar == null)
-        {
-            Debug.LogError("Health bar Image is not assigned in the Inspector."); //debug testing!!! yay!
-        }*/
+        shipSpriteRenderer = playerShip.GetComponent<SpriteRenderer>();
+        shipMovementScript = playerShip.GetComponent<PlayerMovement>();
 
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(isDestroyed)
+        {
+            respawnTimer += Time.deltaTime;
+
+            if(respawnTimer >= respawnDelay)
+            {
+                RespawnShip();
+            }
+            return;
+        }
+
         if (healthAmount <= 0)  
         {
             LoseLife();
@@ -66,6 +82,7 @@ public class HealthManager : MonoBehaviour
         healthAmount = Mathf.Clamp(healthAmount, 0, 100);
         healthBar.fillAmount = healthAmount / 100f;
     }
+
     void LoseLife()
     {
         CurrentLives--;
@@ -73,15 +90,37 @@ public class HealthManager : MonoBehaviour
 
         if(CurrentLives <= 0)
         {
+            TriggerExplosionAndDelay();
             GameOver();
-            //SceneManager.LoadScene(SceneManager.GetActiveScene().name); //remember, just resets the scene.
         }
         else
         {
-            healthAmount = 100f;
-            healthBar.fillAmount = healthAmount / 100f; 
+            TriggerExplosionAndDelay();
         }
     }
+    void TriggerExplosionAndDelay()
+    {
+      
+        Instantiate(explodePrefab, playerShip.transform.position, Quaternion.identity);
+        shipSpriteRenderer.enabled = false;
+        shipMovementScript.enabled = false;
+
+        isDestroyed = true;
+        respawnTimer = 0f;
+
+    }
+    void RespawnShip()
+    {
+        healthAmount = 100f;
+        healthBar.fillAmount = healthAmount / 100f;
+
+        shipSpriteRenderer.enabled = true;
+        shipMovementScript.enabled = true;
+
+        isDestroyed = false;
+    }
+
+
     void UpdateLivesUI()
     {
         foreach (Transform child in ShipLivesPanel)
@@ -92,20 +131,29 @@ public class HealthManager : MonoBehaviour
         for(int i = 0; i < CurrentLives; i++)
         {
             GameObject miniShip = Instantiate(miniShipPrefab, ShipLivesPanel);
-
             RectTransform shipRect = miniShip.GetComponent<RectTransform>();
             shipRect.anchoredPosition = new Vector2(i * 100f, 0);
 
         }
-        LivesCounterText.text = "Lives: "; //+ CurrentLives;//this was for the text display of lives. we want prefabs though!
+        LivesCounterText.text = "Lives: "; 
     }
+
     void GameOver()
     {
-        GameOverPanel.SetActive(true);
-
-        Time.timeScale = 0f; //stops the game! 
+        StartCoroutine(GameOverDelay());
     }
-   public void RestartGame()
+
+    IEnumerator GameOverDelay()
+    {
+        // wait for a short delay (e.g., 1 second) before showing the game over screen
+        yield return new WaitForSecondsRealtime(1f);
+
+       
+        GameOverPanel.SetActive(true);
+        Time.timeScale = 0f; 
+    }
+
+    public void RestartGame()
     {
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
