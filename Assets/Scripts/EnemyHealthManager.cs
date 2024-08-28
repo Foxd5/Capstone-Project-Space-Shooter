@@ -17,7 +17,6 @@ public class EnemyHealthManager : MonoBehaviour
             Die();
         }
 
-        
     }
 
     void Die()
