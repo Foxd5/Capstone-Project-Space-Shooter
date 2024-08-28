@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyHealthManager : MonoBehaviour
 {
     public float healthAmount = 100f;
-
+    public GameObject enemyexplodePrefab;
     public void TakeDamage(float damage)
     {
         healthAmount -= damage;
@@ -13,6 +13,7 @@ public class EnemyHealthManager : MonoBehaviour
 
         if(healthAmount <= 0)
         {
+
             Die();
         }
 
@@ -21,6 +22,7 @@ public class EnemyHealthManager : MonoBehaviour
 
     void Die()
     {
+        Instantiate(enemyexplodePrefab, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
     
