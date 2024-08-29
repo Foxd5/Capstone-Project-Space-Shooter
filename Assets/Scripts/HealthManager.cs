@@ -23,6 +23,7 @@ public class HealthManager : MonoBehaviour
 
     private SpriteRenderer shipSpriteRenderer;
     private PlayerMovement shipMovementScript;
+    private ShipShooting shipShootingScript;
 
     public TextMeshProUGUI LivesCounterText; //for displaying lives in text. but i want it in ships!
 
@@ -34,6 +35,8 @@ public class HealthManager : MonoBehaviour
         UpdateLivesUI();
         GameOverPanel.SetActive(false); //makes sure the gameover panel is hidden on startup
 
+        //get all the components so I can later disable/re-enable them during respawns.
+        shipShootingScript = playerShip.GetComponent<ShipShooting>();
         shipSpriteRenderer = playerShip.GetComponent<SpriteRenderer>();
         shipMovementScript = playerShip.GetComponent<PlayerMovement>();
 
@@ -103,8 +106,11 @@ public class HealthManager : MonoBehaviour
         Vector3 deathPosition = playerShip.transform.position;
 
         Instantiate(explodePrefab, playerShip.transform.position, Quaternion.identity);
+        //I had to disable all of the scripts during respawn. I wasnt sure if there was a better
+        //way to do this.
         shipSpriteRenderer.enabled = false;
         shipMovementScript.enabled = false;
+        shipShootingScript.enabled = false;
 
         // stop the ship's movement by resetting its velocity
         Rigidbody2D shipRb = playerShip.GetComponent<Rigidbody2D>();
@@ -123,6 +129,8 @@ public class HealthManager : MonoBehaviour
         healthAmount = 100f;
         healthBar.fillAmount = healthAmount / 100f;
 
+        //re-enable all the scripting for the players ship
+        shipShootingScript.enabled = true;
         shipSpriteRenderer.enabled = true;
         shipMovementScript.enabled = true;
 
