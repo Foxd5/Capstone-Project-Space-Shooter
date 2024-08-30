@@ -59,15 +59,14 @@ public class ShipShooting : MonoBehaviour
 
         Rigidbody2D shipRb = GetComponent<Rigidbody2D>();
         //new vector had to be used because i couldnt use the + operator to add the ships velocity before.
-
         //this resulted in bullets flying off in each and every direction! perfect! i wanted it to be crazy
         //that being said it wasn't good game play
         //Vector2 bulletVelocity = new Vector2(firePoint.right.x, firePoint.right.y) * bulletSpeed + shipRb.velocity;
         //+ new Vector2(0, shipRb.velocity.y); // adding this back gives diagnol velocity to the bullets, not good gameplay though
         Vector2 bulletVelocity = new Vector2(firePoint.right.x, firePoint.right.y) * bulletSpeed;
+        rb.velocity = bulletVelocity;
 
         shootsoundSource.PlayOneShot(shootSound);
-        rb.velocity = bulletVelocity;
 
         currentBullets--;  
         UpdateBulletUI(); 

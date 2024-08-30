@@ -16,17 +16,17 @@ public class HealthManager : MonoBehaviour
     public GameObject miniShipPrefab;
     public Transform ShipLivesPanel;
     public GameObject GameOverPanel;
+    public AudioClip shipexplodeSound;
 
     private bool isDestroyed = false;
     private float respawnTimer = 0f;
     public float respawnDelay = 2f;
 
+    private AudioSource shipexplodesoundSource;
     private SpriteRenderer shipSpriteRenderer;
     private PlayerMovement shipMovementScript;
     private ShipShooting shipShootingScript;
-   
-
-
+    
     public TextMeshProUGUI LivesCounterText; //for displaying lives in text. but i want it in ships!
 
     // Start is called before the first frame update
@@ -36,6 +36,8 @@ public class HealthManager : MonoBehaviour
         CurrentLives = MaxLives;
         UpdateLivesUI();
         GameOverPanel.SetActive(false); //makes sure the gameover panel is hidden on startup
+
+        shipexplodesoundSource = GetComponent<AudioSource>();
 
         //get all the components so I can later disable/re-enable them during respawns.
         shipShootingScript = playerShip.GetComponent<ShipShooting>();
@@ -107,6 +109,7 @@ public class HealthManager : MonoBehaviour
     {
         Vector3 deathPosition = playerShip.transform.position;
 
+        shipexplodesoundSource.PlayOneShot(shipexplodeSound);
         Instantiate(explodePrefab, playerShip.transform.position, Quaternion.identity);
         //I had to disable all of the scripts during respawn. I wasnt sure if there was a better
         //way to do this.

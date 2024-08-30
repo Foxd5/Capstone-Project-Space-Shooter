@@ -5,15 +5,15 @@ using UnityEngine;
 public class EnemyHealthManager : MonoBehaviour
 {
 
-    public AudioClip explodeSound;
+    public AudioClip shipexplodeSound;
     public float healthAmount = 100f;
     public GameObject enemyexplodePrefab;
-    private AudioSource explodesoundSource;
+    private AudioSource shipexplodesoundSource;
 
     private void Start()
     {
         //need to get audio component so i can change volume later
-        explodesoundSource = GetComponent<AudioSource>();
+        shipexplodesoundSource = GetComponent<AudioSource>();
     }
 
     public void TakeDamage(float damage)
@@ -39,12 +39,12 @@ public class EnemyHealthManager : MonoBehaviour
         //because the new audio source doesnt access the audio components volume control
         GameObject tempAudio = new GameObject("TempAudio");
         AudioSource audioSource = tempAudio.AddComponent<AudioSource>();
-        audioSource.clip = explodeSound;
-        audioSource.volume = explodesoundSource.volume; //had to add this because
+        audioSource.clip = shipexplodeSound;
+        audioSource.volume = shipexplodesoundSource.volume; //had to add this because
         audioSource.Play();
 
         //destroy the temp GameObject after the sound has played
-        Destroy(tempAudio, explodeSound.length);
+        Destroy(tempAudio, shipexplodeSound.length);
         Destroy(gameObject);
 
     }

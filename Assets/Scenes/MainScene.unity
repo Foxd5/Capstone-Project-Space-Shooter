@@ -582,7 +582,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 816b6eab58d24c646a55f35fb63b0f1f, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.01
+  m_Volume: 0.02
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -4001,6 +4001,11 @@ PrefabInstance:
       objectReference: {fileID: 1905343676}
     - target: {fileID: 1569882275792918188, guid: 1cf80cd9dd3fd407b8a831080e0dd32a,
         type: 3}
+      propertyPath: explodeSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 380a61624a607f042ab5e96218f37633, type: 3}
+    - target: {fileID: 1569882275792918188, guid: 1cf80cd9dd3fd407b8a831080e0dd32a,
+        type: 3}
       propertyPath: GameOverPanel
       value: 
       objectReference: {fileID: 2128013080}
@@ -4014,6 +4019,11 @@ PrefabInstance:
       propertyPath: LivesCounterText
       value: 
       objectReference: {fileID: 829835138}
+    - target: {fileID: 1569882275792918188, guid: 1cf80cd9dd3fd407b8a831080e0dd32a,
+        type: 3}
+      propertyPath: shipexplodeSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 380a61624a607f042ab5e96218f37633, type: 3}
     - target: {fileID: 2630871922265292297, guid: 1cf80cd9dd3fd407b8a831080e0dd32a,
         type: 3}
       propertyPath: m_Name
@@ -4210,7 +4220,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: de812cfb519929c4aad9d296f655c81d, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.1
+  m_Volume: 0.08
   m_Pitch: 0.8
   Loop: 0
   Mute: 0
@@ -4306,7 +4316,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 448015b0ae264fe4893425e87c023512, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -4446,7 +4456,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bece9c623a7c64cdf81722b17e01b620, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explodeSound: {fileID: 8300000, guid: 380a61624a607f042ab5e96218f37633, type: 3}
+  shipexplodeSound: {fileID: 8300000, guid: 380a61624a607f042ab5e96218f37633, type: 3}
   healthAmount: 100
   enemyexplodePrefab: {fileID: 8038344524183138613, guid: 0277167a12290af47801444830a2be97,
     type: 3}
