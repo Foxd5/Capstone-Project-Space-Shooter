@@ -4,17 +4,23 @@ using UnityEngine;
 
 public class EnemyHealthManager : MonoBehaviour
 {
-
+    public int pointValue = 10;
     public AudioClip shipexplodeSound;
     public float healthAmount = 100f;
     public GameObject enemyexplodePrefab;
-    private AudioSource shipexplodesoundSource;
 
-    private void Start()
+    private AudioSource shipexplodesoundSource;
+    private ScoreManager scoreManager;
+
+
+    void Start()
     {
         //need to get audio component so i can change volume later
         AudioSource[] audioSources = GetComponents<AudioSource>();
         shipexplodesoundSource = audioSources[0];
+
+        scoreManager = FindObjectOfType<ScoreManager>();
+       
     }
 
     public void TakeDamage(float damage)
@@ -31,8 +37,11 @@ public class EnemyHealthManager : MonoBehaviour
 
     void Die()
     {
+        if (scoreManager != null)
+        {
+            scoreManager.AddPoints(pointValue);
+        }
         Instantiate(enemyexplodePrefab, transform.position, Quaternion.identity);
-        
         //create a temporary GameObject to play the sound
         //needed to do this because destroy() was preventing
         //death sound from being made. Then, because its a new

@@ -28,8 +28,6 @@ public class PlayerMovement : MonoBehaviour
         float moveX = 0f;
         float moveY = 0f;
 
-        //Vector3 pos = transform.position;
-
         if (Input.GetKey("w") || Input.GetKey("up"))
         {
             moveY = speed;
@@ -55,7 +53,6 @@ public class PlayerMovement : MonoBehaviour
 
         rb.position = ClampPosition(rb.position);
        
-        //transform.position = ClampPosition(pos);
     }
 
     // function to clamp(or keep) the ship within the bounds of the screen

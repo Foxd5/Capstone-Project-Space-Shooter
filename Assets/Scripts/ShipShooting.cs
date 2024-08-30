@@ -51,18 +51,10 @@ public class ShipShooting : MonoBehaviour
 
     void Shoot()
     {
-        
         GameObject bullet = Instantiate(BulletPrefab, firePoint.position, firePoint.rotation);
-      
-        // add velocity to the bullet to make it move. Should add ships velocity to this to make more realistic
+        // add velocity to the bullet to make it move
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-
         Rigidbody2D shipRb = GetComponent<Rigidbody2D>();
-        //new vector had to be used because i couldnt use the + operator to add the ships velocity before.
-        //this resulted in bullets flying off in each and every direction! perfect! i wanted it to be crazy
-        //that being said it wasn't good game play
-        //Vector2 bulletVelocity = new Vector2(firePoint.right.x, firePoint.right.y) * bulletSpeed + shipRb.velocity;
-        //+ new Vector2(0, shipRb.velocity.y); // adding this back gives diagnol velocity to the bullets, not good gameplay though
         Vector2 bulletVelocity = new Vector2(firePoint.right.x, firePoint.right.y) * bulletSpeed;
         rb.velocity = bulletVelocity;
 
@@ -75,24 +67,18 @@ public class ShipShooting : MonoBehaviour
     IEnumerator Reload()
     {
         isReloading = true;
-        reloadsoundSource.PlayOneShot(reloadSound);//if i reload here it sounds too early
+        reloadsoundSource.PlayOneShot(reloadSound);
 
-        //Debug.Log("Reloading...");
-        yield return new WaitForSeconds(reloadTime);
-        //reloadsoundSource.PlayOneShot(reloadSound);//reloading here sounds a little late.
-
-
+        yield return new WaitForSeconds(reloadTime); //cause a delay in the reload
 
         currentBullets = maxBullets;  
         isReloading = false;
 
         UpdateBulletUI();  
-        //Debug.Log("Reloaded!");
     }
 
     void UpdateBulletUI()
     {
-        //bulletCounterText.text = "Bullets: " + currentBullets; 
         string bulletTicks = "Ammo: ";
         for (int i = 0; i < currentBullets; i++)
         {
