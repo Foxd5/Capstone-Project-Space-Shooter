@@ -14,14 +14,20 @@ public class ShipShooting : MonoBehaviour
     public float reloadTime = 2f;        // time it takes to reload
     private bool isReloading = false;    // whether the ship is currently reloading
     public float fireRate = .2f;
-    private float nextFireTime = 0f;    
+    private float nextFireTime = 0f;
+    public AudioClip shootSound;
+    public AudioClip reloadSound;
 
     public TextMeshProUGUI bulletCounterText;
+    private AudioSource shootsoundSource;
+    private AudioSource reloadsoundSource;
 
     void Start()
     {
         currentBullets = maxBullets;     //start with full bullets and update bullet UI
-        UpdateBulletUI();                
+        UpdateBulletUI();
+        shootsoundSource = GetComponent<AudioSource>();
+        reloadsoundSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -58,12 +64,9 @@ public class ShipShooting : MonoBehaviour
         //that being said it wasn't good game play
         //Vector2 bulletVelocity = new Vector2(firePoint.right.x, firePoint.right.y) * bulletSpeed + shipRb.velocity;
         //+ new Vector2(0, shipRb.velocity.y); // adding this back gives diagnol velocity to the bullets, not good gameplay though
-        Vector2 bulletVelocity = new Vector2(firePoint.right.x, firePoint.right.y) * bulletSpeed; 
-        //this is to test if what I did above actually changes anything
-       // Debug.Log("Ship velocity: " + shipRb.velocity);
-       // Debug.Log("Bullet velocity: " + bulletVelocity);
+        Vector2 bulletVelocity = new Vector2(firePoint.right.x, firePoint.right.y) * bulletSpeed;
 
-
+        shootsoundSource.PlayOneShot(shootSound);
         rb.velocity = bulletVelocity;
 
         currentBullets--;  
@@ -73,8 +76,13 @@ public class ShipShooting : MonoBehaviour
     IEnumerator Reload()
     {
         isReloading = true;
+        reloadsoundSource.PlayOneShot(reloadSound);//if i reload here it sounds too early
+
         //Debug.Log("Reloading...");
-        yield return new WaitForSeconds(reloadTime);  
+        yield return new WaitForSeconds(reloadTime);
+        //reloadsoundSource.PlayOneShot(reloadSound);//reloading here sounds a little late.
+
+
 
         currentBullets = maxBullets;  
         isReloading = false;

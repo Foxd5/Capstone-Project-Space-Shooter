@@ -24,6 +24,8 @@ public class HealthManager : MonoBehaviour
     private SpriteRenderer shipSpriteRenderer;
     private PlayerMovement shipMovementScript;
     private ShipShooting shipShootingScript;
+   
+
 
     public TextMeshProUGUI LivesCounterText; //for displaying lives in text. but i want it in ships!
 
@@ -39,7 +41,7 @@ public class HealthManager : MonoBehaviour
         shipShootingScript = playerShip.GetComponent<ShipShooting>();
         shipSpriteRenderer = playerShip.GetComponent<SpriteRenderer>();
         shipMovementScript = playerShip.GetComponent<PlayerMovement>();
-
+    
     }
 
     // Update is called once per frame
