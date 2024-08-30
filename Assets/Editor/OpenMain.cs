@@ -5,7 +5,7 @@ using UnityEngine;
 [InitializeOnLoad]
 public class OpenMain
 {
-    static OpenMain()
+   /* static OpenMain()
     {
         EditorApplication.update += LoadDefaultScene;
     }
@@ -31,5 +31,5 @@ public class OpenMain
         {
             SceneView.lastActiveSceneView.in2DMode = true;
         }
-    }
+    }*/
 }
