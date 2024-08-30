@@ -15,8 +15,8 @@ public class EnemyShooting : MonoBehaviour
 
     void Start()
     {
-
-        shootsoundSource = GetComponent<AudioSource>();
+        AudioSource[] audioSources = GetComponents<AudioSource>();
+        shootsoundSource = audioSources[1];
     }
 
 

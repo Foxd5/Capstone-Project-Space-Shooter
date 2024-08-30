@@ -13,7 +13,8 @@ public class EnemyHealthManager : MonoBehaviour
     private void Start()
     {
         //need to get audio component so i can change volume later
-        shipexplodesoundSource = GetComponent<AudioSource>();
+        AudioSource[] audioSources = GetComponents<AudioSource>();
+        shipexplodesoundSource = audioSources[0];
     }
 
     public void TakeDamage(float damage)
