@@ -10,16 +10,19 @@ public class EnemySpawner : MonoBehaviour
         //public float spawnDelay; // delay between spawns in this wave (unused)
     }
 
+    public GameObject endlevelPanel;
     public Wave[] waves; 
     public GameObject enemyPrefab; 
-    public Transform[] spawnPoints; 
+    public Transform[] spawnPoints;
 
+    private HealthManager healthManager;
     private int currentWaveIndex = 0;
     //private int enemiesSpawnedInCurrentWave = 0;
     private int enemiesAlive = 0;
 
     void Start()
     {
+        healthManager = GameObject.Find("PlayerShip").GetComponent<HealthManager>();
         SpawnEnemy();
     }
 
@@ -41,7 +44,6 @@ public class EnemySpawner : MonoBehaviour
         GameObject newEnemy = Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
         enemiesAlive++;
 
-        // Subscribe to the enemy's death event
         EnemyHealthManager enemyHealth = newEnemy.GetComponent<EnemyHealthManager>();
         if (enemyHealth != null)
         {
@@ -55,23 +57,24 @@ public class EnemySpawner : MonoBehaviour
 
         if (enemiesAlive <= 0)
         {
-            // Move to the next wave
             currentWaveIndex++;
 
             if (currentWaveIndex < waves.Length)
             {
-                SpawnWave(); // Spawn the next wave
+                SpawnWave(); 
             }
             else
             {
-                // Optionally, trigger level completion logic here
+                LevelCompleted();
             }
         }
     }
 
     void LevelCompleted()
     {
-        //Debug.Log("Level Completed!");
+        //Time.timeScale = 0f; //exluding this for now because its fun to move around on level finish
+        endlevelPanel.SetActive(true);
+
         // Trigger level completion logic here
     }
 }

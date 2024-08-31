@@ -13,10 +13,12 @@ public class PauseMenu : MonoBehaviour
     public Button ResumeButton;
     public Button OptionsButton;
     public Button QuitButton;
+    public Button NextLevelButton;
     private bool isPaused = false;  
 
     void Start()
     {   //assign functions to each of my buttons!!! (finally :) )
+        NextLevelButton.onClick.AddListener(nextLevel);
         MenuButton.onClick.AddListener(TogglePauseMenu);
         ResumeButton.onClick.AddListener(ResumeGame);
         QuitButton.onClick.AddListener(QuitGame);
@@ -58,6 +60,10 @@ public class PauseMenu : MonoBehaviour
         //had to add this because every time I clicked out of the pause menu and pressed space, the game would repause
          
         EventSystem.current.SetSelectedGameObject(null);
+    }
+    public void nextLevel()
+    {
+        SceneManager.LoadScene("Level2");
     }
 
     public void QuitGame()
