@@ -15,34 +15,51 @@ public class EnemySpawner : MonoBehaviour
     public GameObject enemyPrefab; 
     public Transform[] spawnPoints;
 
-    private HealthManager healthManager;
     private int currentWaveIndex = 0;
-    //private int enemiesSpawnedInCurrentWave = 0;
     private int enemiesAlive = 0;
+
+    private static int totalEnemiesAlive = 0;
+    private static int spawnersCompleted = 0;
 
     void Start()
     {
-        healthManager = GameObject.Find("PlayerShip").GetComponent<HealthManager>();
-        SpawnEnemy();
+        SpawnWave();
     }
 
     void SpawnWave()
     {
-        if (currentWaveIndex >= waves.Length) return; // stop if all waves are complete
+
+        {
+            if (currentWaveIndex >= waves.Length)
+            {
+                spawnersCompleted++;
+                CheckLevelCompletion(); // Check if all spawners have completed their waves
+                return; // Stop if all waves are complete
+            }
+
+            int enemiesToSpawn = waves[currentWaveIndex].enemyCount;
+            enemiesAlive += enemiesToSpawn;
+            totalEnemiesAlive += enemiesToSpawn; // Track total enemies across all spawners
+
+            for (int i = 0; i < enemiesToSpawn; i++)
+            {
+                SpawnEnemy();
+            }
+        }
+        /*if (currentWaveIndex >= waves.Length) return; // stop if all waves are complete
 
         int enemiesToSpawn = waves[currentWaveIndex].enemyCount;
 
         for (int i = 0; i < enemiesToSpawn; i++)
         {
             SpawnEnemy();
-        }
+        }*/
     }
 
     void SpawnEnemy()
     {
         Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
         GameObject newEnemy = Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
-        enemiesAlive++;
 
         EnemyHealthManager enemyHealth = newEnemy.GetComponent<EnemyHealthManager>();
         if (enemyHealth != null)
@@ -51,25 +68,28 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
+
     void HandleEnemyDeath()
     {
         enemiesAlive--;
+        totalEnemiesAlive--;
 
         if (enemiesAlive <= 0)
         {
             currentWaveIndex++;
-
-            if (currentWaveIndex < waves.Length)
-            {
-                SpawnWave(); 
-            }
-            else
-            {
-                LevelCompleted();
-            }
+            SpawnWave(); // Trigger next wave if current wave is done
         }
+
+        CheckLevelCompletion(); // Check if the level should be completed
     }
 
+    void CheckLevelCompletion()
+    {
+        if (totalEnemiesAlive <= 0 && spawnersCompleted == FindObjectsOfType<EnemySpawner>().Length)
+        {
+            LevelCompleted();
+        }
+    }
     void LevelCompleted()
     {
         //Time.timeScale = 0f; //exluding this for now because its fun to move around on level finish
