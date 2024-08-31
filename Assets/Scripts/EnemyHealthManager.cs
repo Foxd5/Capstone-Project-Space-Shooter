@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class EnemyHealthManager : MonoBehaviour
 {
+    public delegate void EnemyDeathHandler();
+    public event EnemyDeathHandler OnEnemyDeath;
+
     public int pointValue = 10;
     public AudioClip shipexplodeSound;
     public float healthAmount = 100f;
@@ -26,7 +29,7 @@ public class EnemyHealthManager : MonoBehaviour
     public void TakeDamage(float damage)
     {
         healthAmount -= damage;
-        //Debug.Log("Enemy Health: " + healthAmount);
+        Debug.Log("Enemy Health: " + healthAmount);
 
         if(healthAmount <= 0)
         {
@@ -37,6 +40,11 @@ public class EnemyHealthManager : MonoBehaviour
 
     void Die()
     {
+        //  Debug.Log("die is called");
+        if (OnEnemyDeath != null)
+        {
+            OnEnemyDeath();
+        }
         if (scoreManager != null)
         {
             scoreManager.AddPoints(pointValue);
