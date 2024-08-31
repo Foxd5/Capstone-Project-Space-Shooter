@@ -72,7 +72,7 @@ public class HealthManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.B)) //B button heals 5 damage
         {
-            Heal(5);
+            Heal(50);
         }
         
     }
@@ -178,6 +178,7 @@ public class HealthManager : MonoBehaviour
 
     public void RestartGame()
     {
+        ScoreManager.instance.ResetScoreToInitial(); //reset score to INITIAL score in level if restarted
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         

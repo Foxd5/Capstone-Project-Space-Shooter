@@ -36,7 +36,7 @@ public class PlayerBullet : MonoBehaviour
             EnemyHealthManager enemyHealth = collision.GetComponent<EnemyHealthManager>();
             if(enemyHealth != null)
             {
-                Debug.Log("Enemy health after damage: " + enemyHealth.healthAmount); // Check enemy's health after taking damage
+                //Debug.Log("Enemy health after damage: " + enemyHealth.healthAmount); // Check enemy's health after taking damage
 
                 enemyHealth.TakeDamage(damage);
             }

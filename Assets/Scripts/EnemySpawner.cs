@@ -23,6 +23,8 @@ public class EnemySpawner : MonoBehaviour
 
     void Start()
     {
+        totalEnemiesAlive = 0;//have to reset these at the start of each level
+        spawnersCompleted = 0;//so you can correctly trigger level completion
         SpawnWave();
     }
 
