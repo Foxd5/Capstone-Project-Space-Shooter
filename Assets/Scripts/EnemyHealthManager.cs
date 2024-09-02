@@ -29,7 +29,7 @@ public class EnemyHealthManager : MonoBehaviour
     public void TakeDamage(float damage)
     {
         healthAmount -= damage;
-        Debug.Log("Enemy Health: " + healthAmount);
+       // Debug.Log("Enemy Health: " + healthAmount);
 
         if(healthAmount <= 0)
         {

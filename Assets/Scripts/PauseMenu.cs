@@ -63,7 +63,18 @@ public class PauseMenu : MonoBehaviour
     }
     public void nextLevel()
     {
-        SceneManager.LoadScene("Level2");
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        int nextSceneIndex = currentSceneIndex + 1;
+
+        if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
+        {
+            SceneManager.LoadScene(nextSceneIndex);
+        }
+        else
+        {
+            Debug.Log("No more levels to load, returning to the main menu.");
+            SceneManager.LoadScene("MainMenuScene"); // or handle the end of the game here
+        }
     }
 
     public void QuitGame()

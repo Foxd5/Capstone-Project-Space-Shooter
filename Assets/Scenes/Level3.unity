@@ -906,7 +906,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Level 1 Completed!!
+  m_text: Level 2 Completed!!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1340,7 +1340,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &673929301
 Transform:
   m_ObjectHideFlags: 0
@@ -2182,9 +2182,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   endlevelPanel: {fileID: 1700268263}
   waves:
-  - enemyCount: 1
-  - enemyCount: 2
   - enemyCount: 3
+  - enemyCount: 4
+  - enemyCount: 5
+  - enemyCount: 6
   enemyPrefab: {fileID: 7166684158998055359, guid: 93365d50789a34cc19711fa01e77e9c5,
     type: 3}
   spawnPoints:
@@ -3332,7 +3333,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1514362635
 Transform:
   m_ObjectHideFlags: 0
@@ -3486,7 +3487,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: 21300000, guid: ddcac1fac1f5c8943a30c2ef6b724062, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 35313af049b4a2f42a0325330c51d74a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
