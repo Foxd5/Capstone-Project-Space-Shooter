@@ -176,7 +176,7 @@ public class HealthManager : MonoBehaviour
         Time.timeScale = 0f; 
     }
 
-    public void RestartGame()
+    public void RestartLevel()
     {
         ScoreManager.instance.ResetScoreToInitial(); //reset score to INITIAL score in level if restarted
         Time.timeScale = 1f;

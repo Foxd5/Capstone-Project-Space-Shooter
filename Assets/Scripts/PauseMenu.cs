@@ -11,7 +11,6 @@ public class PauseMenu : MonoBehaviour
     public GameObject pauseMenuUI; 
     public Button MenuButton; // references to all of the buttons on the pause menu
     public Button ResumeButton;
-    public Button OptionsButton;
     public Button QuitButton;
     public Button NextLevelButton;
     private bool isPaused = false;  
@@ -70,11 +69,8 @@ public class PauseMenu : MonoBehaviour
         {
             SceneManager.LoadScene(nextSceneIndex);
         }
-        else
-        {
-            Debug.Log("No more levels to load, returning to the main menu.");
-            SceneManager.LoadScene("MainMenuScene"); // or handle the end of the game here
-        }
+  
+    
     }
 
     public void QuitGame()
