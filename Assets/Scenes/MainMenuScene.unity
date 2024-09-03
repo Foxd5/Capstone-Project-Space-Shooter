@@ -675,7 +675,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &336979533
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1231,8 +1231,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 400, y: -163}
-  m_SizeDelta: {x: 800.01, y: 326}
+  m_AnchoredPosition: {x: 383.7, y: -163}
+  m_SizeDelta: {x: 708, y: 314.07}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1141552924
 MonoBehaviour:
@@ -1254,13 +1254,23 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "All of the C# scripts were created by me, David Fox, with the help of
-    youtube tutorials. All sound effects, visuals, sprites, and backgrounds were
-    acquired for free from the Unity Asset Store. Credits for all effects used are
-    below:\nSFX:\nMusic:\nBattle Music - \nMain Menu Music - \nBackground Graphics:\nPlayer\u2019s
-    Ship:\nSprite/Animation -\nShooting Sound \nBullet Sprite -\nDeath Explosion
-    Animation - \nDeath Explosion Sound -\nEnemy Ship:\nSprite - \nBullet Sprite
-    -\nShooting Sound - \nDeath Explosion Animation - \nDeath Explosion Sound - \n"
+  m_text: "Creator - David Fox\n\nAll of the C# scripts were created by me with the
+    help of many youtube tutorials and stackoverflow/reddit forums, except for the
+    Score Manager script which was partially created alongside my friend Alex DeWitt.
+    Alex also helped debug many of my issues throughout development.  All sound effects,
+    visuals, sprites, and backgrounds were acquired for free from the Unity Asset
+    Store. Credits for all effects used are below:\n\nSFX\nBattle Music: \u201CUniverse
+    Sounds Free Pack\u201D - Marcin Klosowski \nMain Menu Music - \u201CUniverse
+    Sounds Free Pack\u201D - Marcin Klosowski \nPlayer\u2019s Reload Sound - \u201CSci-fi
+    Small Sound Pack\u201D - Sound Works 12\nPlayer\u2019s Shooting Sound - \u201CFree
+    Laser Weapons\u201D - Daniel SoundsGood\nEnemy\u2019s Shooting Sound - \u201C8
+    Bit Style Sound Effects\u201D - Cabled Mess \nDeath Explosion Sound (all ships) 
+    - \u201CFree Laser Weapons\u201D - Daniel SoundsGood\n\nVFX:\nBackground Space
+    Graphics - \u201CDynamic Space Background Lite\u201D - DinV Studio\nPlayer\u2019s
+    Sprite/Animation - \u201CPixel Art Ship Part 1\u201D - Crehera \nPlayer/Enemy
+    Bullet Prefab - \u201CPixel Space Shooter FREE\u201D - Lootzifr\nPlayer/Enemy
+    Death Explosion Animation - \u201CFree 2D Impact FX\u201D - Inguz Media:\nEnemy
+    Sprite -  \u201CFree Stylized 2D Space Shooter Pack\u201D - Larzes \n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1287,8 +1297,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 14
-  m_fontSizeBase: 14
+  m_fontSize: 13
+  m_fontSizeBase: 13
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
