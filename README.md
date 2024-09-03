@@ -50,7 +50,7 @@ Player’s Shooting Sound - “Free Laser Weapons” - Daniel SoundsGood
 Enemy’s Shooting Sound - “8 Bit Style Sound Effects” - Cabled Mess
 Death Explosion Sound (all ships)  - “Free Laser Weapons” - Daniel SoundsGood
 
-VFX:
+VFX
 Background Space Graphics - “Dynamic Space Background Lite” - DinV Studio
 Player’s Sprite/Animation - “Pixel Art Ship Part 1” - Crehera
 Player/Enemy Bullet Prefab - “Pixel Space Shooter FREE” - Lootzifr
