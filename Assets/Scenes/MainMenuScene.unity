@@ -1490,8 +1490,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Controls: \nMove Up - W/ArrowKey-up\nMove Down - S/ArrowKey-down\nMove
     Right - D/ArrowKey-Right\nMove Left - A/ArrowKey-Left\nSpace (Tap OR Hold) -
-    Shoot Main Gun\nR - Reload Main Gun (Once out of bullets, ship will auto reload
-    too)\nEscape - Pause/Resume\n"
+    Shoot Main Gun\nR - Reload Main Gun (once out of bullets ship will auto reload)\nEscape
+    - Pause/Resume\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
