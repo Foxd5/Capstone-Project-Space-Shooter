@@ -7,7 +7,7 @@ off waves of their fighters until they are all defeated. The game itself is
 meant to be difficult, so please be patient, and enjoy the ride.
 
 Github Link: https://github.com/Foxd5/Capstone-Project-Space-Shooter
-
+Itch.io link: https://foxd5.itch.io/halfway-to-mars
 Controls:
 Move Up - W/ArrowKey-up
 Move Down - S/ArrowKey-down
