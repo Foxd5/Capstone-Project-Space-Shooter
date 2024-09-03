@@ -6,6 +6,8 @@ shooter. Earth has been attacked by evil Martians and our hero (you) must fight
 off waves of their fighters until they are all defeated. The game itself is
 meant to be difficult, so please be patient, and enjoy the ride.
 
+Github Link: https://github.com/Foxd5/Capstone-Project-Space-Shooter
+
 Controls:
 Move Up - W/ArrowKey-up
 Move Down - S/ArrowKey-down
